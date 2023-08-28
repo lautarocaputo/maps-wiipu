@@ -50,23 +50,23 @@ function initMap() {
     });
 
     $.ajax({
-        url: "./php/getCoordenadas.php",
+        url: "../php/getCoordenadasInstalaciones.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
 
-                var latLng = new google.maps.LatLng(data[i].latitud, data[i].longitud);
+                var latLng = new google.maps.LatLng(data[i].lat_real, data[i].lng_real);
                 heatmapData.push(latLng);
 
                 var marker = new google.maps.Marker({
-                    position: { lat: parseFloat(data[i].latitud), lng: parseFloat(data[i].longitud) },
+                    position: { lat: parseFloat(data[i].lat_real), lng: parseFloat(data[i].lng_real) },
                     map: map,
-                    title: "Marcador " + (i + 1),
+                    title: "Codigo: " + data[i].codigo,
                 });
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: "Latitud: " + data[i].latitud + "<br>Longitud: " + data[i].longitud
+                    content: "Codigo: " + data[i].codigo + "<br>Latitud: " + data[i].lat_real + "<br>Longitud: " + data[i].lng_real
                 });
 
 
@@ -75,7 +75,10 @@ function initMap() {
                 });
 
                 markers.push(marker);
+                console.log(marker);
+                
             }
+
 
             // Crear capa de mapa de calor
             new google.maps.visualization.HeatmapLayer({

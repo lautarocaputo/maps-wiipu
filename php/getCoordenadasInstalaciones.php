@@ -1,8 +1,8 @@
 <?php
 
-include("config.php");
+include("../config/bd.php");
 
-$query = "SELECT * FROM coordenadas ";
+$query = "SELECT * FROM instalaciones";
 $resultado = mysqli_query($conexion, $query);
 
 $datos = array();

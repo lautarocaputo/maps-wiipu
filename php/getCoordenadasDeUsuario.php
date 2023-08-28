@@ -1,6 +1,6 @@
 <?php
 
-include("config.php");
+include("../config/bd.php");
 
 $query = "SELECT * FROM usuarios_geo WHERE idUsuario=?";
 $idUsuario = 326; // reemplazar con el id del usuario de la sesion

@@ -69,7 +69,7 @@ function initMap() {
 
 
     $.ajax({
-        url: "./php/getCoordenadasDeUsuario.php",
+        url: "../php/getCoordenadasDeUsuario.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
